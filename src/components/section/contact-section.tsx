@@ -4,7 +4,7 @@ import { DATA } from "@/data/resume";
 
 export default function ContactSection() {
   const directMessageUrl =
-    DATA.contact.social.X?.url ?? DATA.contact.social.GitHub?.url ?? "https://github.com/getsono";
+    DATA.contact.social.GitHub?.url ?? "https://github.com/getsono";
 
   return (
     <div className="border rounded-xl p-10 relative">
@@ -33,4 +33,3 @@ export default function ContactSection() {
     </div>
   );
 }
-

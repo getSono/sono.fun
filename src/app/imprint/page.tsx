@@ -1,7 +1,7 @@
 import BlurFade from "@/components/magicui/blur-fade";
-import { DATA } from "@/data/resume";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { DATA } from "@/data/resume";
 
 export const metadata: Metadata = {
   title: "Imprint",
@@ -20,6 +20,8 @@ export const metadata: Metadata = {
 const BLUR_FADE_DELAY = 0.04;
 
 export default function ImprintPage() {
+  const imprint = DATA.imprint;
+
   return (
     <section id="imprint" className="space-y-8">
       <BlurFade delay={BLUR_FADE_DELAY}>
@@ -46,37 +48,58 @@ export default function ImprintPage() {
         <div className="rounded-xl border bg-card/60 p-6 shadow-sm shadow-black/5">
           <div className="mb-5 flex items-center justify-between gap-2">
             <p>
-              Sono — Julian Duc-Nam Wolf
+              {imprint.responsible}
               <br />
-              c/o Online-Impressum 10690
+              {imprint.location.split("\n").map((line) => (
+                <span key={line}>
+                  {line}
+                  <br />
+                </span>
+              ))}
               <br />
-              Europaring 90
-              <br />
-              53757 Sankt Augustin
-              <br />
-              <br />
-              <span className="font-medium">Email</span>:{" "}
+              <span className="font-medium">E-Mail</span>:{" "}
               <Link
-                href="mailto:sono@mail.online-impressum.de"
+                href={`mailto:${imprint.email}`}
                 className="text-primary hover:underline"
               >
-                sono@mail.online-impressum.de
+                {imprint.email}
               </Link>
               <br />
               <span className="font-medium">Phone</span>:{" "}
               <Link
-                href="tel:+49125255746757"
+                href={`tel:${imprint.tel}`}
                 className="text-primary hover:underline"
               >
-                +49 12525 5746757
+                {imprint.tel}
               </Link>
-              <br/>
-              <Link href="https://mein.online-impressum.de/sono#zweiterkontaktweg" className="text-medium hover:underline">
-                Contact Formular
+              <br />
+              <Link
+                href={imprint.secondContactUrl}
+                className="text-medium hover:underline"
+              >
+                Kontaktformular
               </Link>
               <br />
               <br />
-              <span className="font-medium">Zuständige Aufsichtsbehörde</span>: Bayerische Landeszentrale für neue Medien | Sitz: Deutschland
+              <span className="font-medium">
+                Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
+              </span>
+              : Julian Duc-Nam Wolf
+              <br />
+              <span className="font-medium">Zuständige Aufsichtsbehörde</span>:{" "}
+              {imprint.authority}
+              <br />
+              <span className="font-medium">
+                Verbraucherstreitbeilegung (§ 36 VSBG)
+              </span>
+              : Ich bin nicht bereit und nicht verpflichtet, an
+              Streitbeilegungsverfahren vor einer
+              Verbraucherschlichtungsstelle teilzunehmen.
+              <br />
+              <br />
+              <Link href="/privacy" className="text-primary hover:underline">
+                Zur Datenschutzerklärung
+              </Link>
             </p>
           </div>
         </div>

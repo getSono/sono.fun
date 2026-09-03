@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon, LandmarkIcon } from "lucide-react";
+import { HomeIcon, NotebookIcon, LandmarkIcon, ShieldCheckIcon } from "lucide-react";
 import { ReactLight } from "@/components/ui/svgs/reactLight";
 import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
 import { Typescript } from "@/components/ui/svgs/typescript";
@@ -63,7 +63,12 @@ export const DATA = {
         name: "Imprint",
         url: "/imprint",
         icon: LandmarkIcon,
-
+        navbar: true,
+      },
+      Privacy: {
+        name: "Privacy",
+        url: "/privacy",
+        icon: ShieldCheckIcon,
         navbar: true,
       },
     },
